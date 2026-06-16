@@ -14,8 +14,6 @@ import java.time.Instant
 import java.util.*
 import kotlin.math.roundToLong
 
-name = "基础: 全局变量"
-
 //SystemVars
 registerVar("tps", "服务器tps", DynamicVar {
     Core.graphics.framesPerSecond.coerceAtMost(255)
@@ -96,8 +94,9 @@ registerVarForType<Unit>().apply {
     registerChild("health", "当前血量") { it.health }
     registerChild("maxHealth", "最大血量") { it.maxHealth }
     registerChild("shield", "护盾值") { it.shield }
-    registerChild("ammo", "弹药") { if (state.rules.unitAmmo) it.shield else resolveVarChild(it, "maxAmmo")?.unwrap() }
-    registerChild("maxAmmo", "弹药容量") { it.type.ammoCapacity }
+    // (Ammo system removed in Mindustry v8 - unitAmmo and ammoCapacity no longer exist)
+    // registerChild("ammo", ...) REMOVED
+    // registerChild("maxAmmo", ...) REMOVED
 }
 
 var startTime = Instant.now()!!
